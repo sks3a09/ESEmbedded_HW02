@@ -141,6 +141,6 @@ objdump的結果
 
 ![](https://i.imgur.com/z4zZvE8.png)
 
-最後pop的結果就是先pop到r1，再pop到r2，最後pop到r0
+最後pop的結果就是先pop 9 到r1，再pop 8 到r2，最後pop 7 到r0
 
 ![](https://i.imgur.com/GA9IMiD.png)
