@@ -134,6 +134,13 @@ objdump的結果
 
 9.最後測試如果想要照自己的順序進行push和pop的話，就必須分開寫，否則就會照上面得到的結論一樣。
 
-![](https://i.imgur.com/yq6YYdg.png)
 ![](https://i.imgur.com/OfKCvoW.png)
+![](https://i.imgur.com/yq6YYdg.png)
+
+得到的結果就是先push r0，再push r1，再push r2
+
 ![](https://i.imgur.com/z4zZvE8.png)
+
+最後pop的結果就是先pop到r1，再pop到r2，最後pop到r0
+
+![](https://i.imgur.com/GA9IMiD.png)
