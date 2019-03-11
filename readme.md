@@ -107,10 +107,10 @@ objdump的結果
 
 查看反組譯的結果會發現原本在第19行的 `push {r2,r0,r1}` 變成了 `push {r0,r1,r2}`，第20行的`pop {r1,r2,r0}` 變成了 `pop {r0,r1,r2}`
 
-5. 輸入 `si` 單步執行觀察，執行完第12行mov指令，暫存器r0,r1,r2的值辦更改，r0的值為1，r1的值為2，r2的值為3。
+5. 輸入 `si` 單步執行觀察，執行完第12行mov指令，暫存器r0,r1,r2的值被更改，r0的值為1，r1的值為2，r2的值為3。
 
 ![](https://i.imgur.com/8HDERo2.png)
-![](https://i.imgur.com/dEtk8h2.png)
+![](https://i.imgur.com/KDcnizz.png)
 
 6. 執行完第13行push指令，sp的值由0x20000100被更改為0x200000f4，因為push的三個值進入stack。
 
@@ -118,6 +118,6 @@ objdump的結果
 ![](https://i.imgur.com/zEl4Ghk.png)
 ![](https://i.imgur.com/bYELlLx.png)
 
-利用gdb查看stack位址中存放的值，發現`push {r0,r1,r2}`會由r2先push再push r1，最後才是r0，所以可以知道是由右到左進行push
+利用gdb查看stack位址中存放的值，發現`push {r0,r1,r2}`會由r2先push再push r1，最後才是r0，所以可以知道是**由右到左進行push**
 
 7.
