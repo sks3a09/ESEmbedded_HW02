@@ -136,7 +136,7 @@ objdump的結果
 ![](https://i.imgur.com/lfKKKb5.png)
 ![](https://i.imgur.com/nDsqwBK.png)
 
-9.最後測試如果想要照自己的順序進行push和pop的話，就必須分開寫，否則就會照上面得到的結論一樣。
+9.最後測試如果想要照自己的順序進行push和pop的話，就必須分開寫，否則就會在組譯時被更改為遞增的排序。
 
 ![](https://i.imgur.com/OfKCvoW.png)
 ![](https://i.imgur.com/yq6YYdg.png)
