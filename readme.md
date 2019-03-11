@@ -148,3 +148,9 @@ objdump的結果
 最後pop的結果就是先pop 9 到r1，再pop 8 到r2，最後pop 7 到r0
 
 ![](https://i.imgur.com/GA9IMiD.png)
+
+## 3. 結果與討論
+1. push的指令如果暫存器有按照遞增的方式排序的話會**從右至左**依序的push進入stack
+2. pop的指令如果暫存器有按照遞增的方式排序的話會**從左至右**依序的pop離開stack
+3. push和pop的順序想要不依照遞增的排序進入/離開stack的話必須分開寫
+4. stack 主要是用在call function的時候，為了避免暫存器裡面的值被更改，所以先存放到stack中
