@@ -120,6 +120,8 @@ objdump的結果
 
 ![](https://i.imgur.com/bYELlLx.png)
 
+**因為stack的起始位置為0x20000100，且stack存放的方法是由0x20000100依次-4存放下去，所以第一個存放的位置是0x200000fc**
+
 利用gdb查看stack位址中存放的值，發現`push {r0,r1,r2}`會由r2先push再push r1，最後才是r0，所以可以知道是**由右到左進行push**
 
 7.執行完第14行pop指令，sp的值由0x200000f4被更改為0x20000100，因為pop的三個值出去stack。
