@@ -124,6 +124,16 @@ objdump的結果
 
 ![](https://i.imgur.com/hctj6df.png)
 
-觀察暫存器r0,r1,r2的值發現，發現`pop {r0,r1,r2}`會先將stack中的值先 pop 到 r 2再 pop 到 r1，最後才是 r0 ，所以可以知道是**由右到左進行pop**
+觀察暫存器r0,r1,r2的值發現，發現`pop {r0,r1,r2}`會先將stack中的值先 pop 到 r0再 pop 到 r1，最後才是 r2 ，所以可以知道是**由左到右進行pop**
 
-8.
+8.執行完第18行mov指令，暫存器r0,r1,r2的值被更改，r0的值為4，r1的值為5，r2的值為6。接著執行第19行指令`push {r2,r0,r1}` 但組譯時已經被更改為`push {r0,r1,r2}` 所以執行結果與一開始相同，都是先push r2再push r1最後才是r0
+
+![](https://i.imgur.com/LCPHEOe.png)
+![](https://i.imgur.com/lfKKKb5.png)
+![](https://i.imgur.com/nDsqwBK.png)
+
+9.最後測試如果想要照自己的順序進行push和pop的話，就必須分開寫，否則就會照上面得到的結論一樣。
+
+![](https://i.imgur.com/yq6YYdg.png)
+![](https://i.imgur.com/OfKCvoW.png)
+![](https://i.imgur.com/z4zZvE8.png)
