@@ -51,8 +51,55 @@ This is the hw02 sample. Please follow the steps below.
 
 --------------------
 
-- [] **If you volunteer to give the presentation next week, check this.**
+- [ ] **If you volunteer to give the presentation next week, check this.**
 
 --------------------
+HW02
+===
+## 1. 實驗題目
+撰寫簡易組語觀察 registers 的順序會不會影響 push 和 pop 指令。
+## 2. 實驗步驟
+1. 先將資料夾 gnu-mcu-eclipse-qemu 完整複製到 ESEmbedded_HW02 資料夾中
+2. 根據 [ARM infomation center](http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.dui0489e/Cihfddaf.html) 敘述的 push, pop 用法
+	* PUSH{cond} reglist
+	* POP{cond} reglist
+	
+	cond
+		is an optional condition code.
 
-Please take your note here.
+	reglist
+		is a non-empty list of registers, enclosed in braces. It can contain register ranges. It must be comma separated if it contains more than one register or register range.
+3. 設計測試程式 main.s ，從 _start 開始後依序執行，並且觀察第13行`push {r0,r1,r2}`和 第19行`push {r2,r0,r1}`之間的差異，以及第14行`pop {r0,r1,r2}`和第20行`pop {r1,r2,r0}`之間的差異。
+
+main.s
+```assembly
+_start:
+    nop
+    mov r0,1
+    mov r1,2
+    mov r2,3
+    push {r0,r1,r2}
+    pop {r0,r1,r2}
+    nop
+    mov r0,4
+    mov r1,5
+    mov r2,6
+    push {r2,r0,r1}
+    pop {r1,r2,r0}
+    nop
+    mov r0,7
+    mov r1,8
+    mov r2,9
+    push {r0}
+    push {r1}
+    push {r2}
+    pop {r1}
+    pop {r2}
+    pop {r0}
+    nop
+```
+4. 在Makefile中加入`$(CROSS-COMPILER)objdump -D main.elf` (執行`$ make`後就可以看到objdump的結果
+
+5. 將 main.s 編譯並以 qemu 模擬， `$ make clean`, `$ make`, `$ make qemu`
+開啟另一 Terminal 連線 `$ arm-none-eabi-gdb` ，再輸入 `target remote localhost:1234` 連接，輸入兩次的 `ctrl + x` 再輸入 `2`, 開啟 Register 以及指令，並且輸入 `si` 單步執行觀察。
+![]()
