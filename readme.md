@@ -115,7 +115,9 @@ objdump的結果
 6. 執行完第13行push指令，sp的值由0x20000100被更改為0x200000f4，因為push的三個值進入stack。
 
 ![](https://i.imgur.com/EoGUTcN.png)
+
 ![](https://i.imgur.com/oWKCTil.png)
+
 ![](https://i.imgur.com/bYELlLx.png)
 
 利用gdb查看stack位址中存放的值，發現`push {r0,r1,r2}`會由r2先push再push r1，最後才是r0，所以可以知道是**由右到左進行push**
